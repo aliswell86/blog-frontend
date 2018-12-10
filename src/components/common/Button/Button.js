@@ -6,13 +6,14 @@ import {Link} from 'react-router-dom';
 const cx = classNames.bind(styles);
 const Div = ({children, ...rest}) => <div {...rest}>{children}</div>
 
-const Button = ({children, to, disabled, theme = 'default'}) => {
+const Button = ({children, to, disabled, theme = 'default', onClick}) => {
   const Element = (to && !disabled) ? Link : Div;
 
   return (
     <Element
       to={to}
-      className={cx('button', theme, {disabled})}>
+      className={cx('button', theme, {disabled})}
+      onClick={disabled ? () => null : onClick}>
       {children}
     </Element>
   );
